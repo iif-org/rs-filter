@@ -177,8 +177,8 @@ impl<T: na::RealField> DKalmanFilter<T> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rand::Rng;
     use plotters::prelude::*;
+    use rand::Rng;
 
     #[test]
     fn test_plot_demo_image() {
@@ -199,7 +199,7 @@ mod tests {
         let q = DMatrix::<f64>::from_vec(2, 2, vec![0.0, 0.0, 0.0, 0.0]);
         let r = DMatrix::<f64>::from_vec(1, 1, vec![1.0]);
         let h = DMatrix::<f64>::from_vec(1, 2, vec![1.0, 0.0]);
-        let f = DMatrix::<f64>::from_vec(2, 2, vec![1.0, 0.0, 1.0, 1.0]);  // XXX: Different with Static Matrix::new
+        let f = DMatrix::<f64>::from_vec(2, 2, vec![1.0, 0.0, 1.0, 1.0]); // XXX: Different with Static Matrix::new
         let b = DMatrix::<f64>::from_vec(2, 1, vec![0.0, 0.0]);
         let mut kf = DKalmanFilter::new(x_0, p, q, r, h, f, b);
 
@@ -212,7 +212,8 @@ mod tests {
         }
 
         // Plot results
-        let root = BitMapBackend::new("demo/kalman-filter-linear(dynamic).jpg", (800, 600)).into_drawing_area();
+        let root = BitMapBackend::new("demo/kalman-filter-linear(dynamic).jpg", (800, 600))
+            .into_drawing_area();
         root.fill(&WHITE).unwrap();
         let mut chart = ChartBuilder::on(&root)
             .caption("Kalman Filtered Linear(Dynamic)", ("sans-serif", 30))

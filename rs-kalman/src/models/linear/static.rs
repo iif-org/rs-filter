@@ -180,8 +180,8 @@ impl<T: na::RealField, const X: usize, const Z: usize, const U: usize> SKalmanFi
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rand::Rng;
     use plotters::prelude::*;
+    use rand::Rng;
 
     #[test]
     fn test_plot_demo_image() {
@@ -216,7 +216,8 @@ mod tests {
         }
 
         // Plot results
-        let root = BitMapBackend::new("demo/kalman-filter-linear.jpg", (800, 600)).into_drawing_area();
+        let root =
+            BitMapBackend::new("demo/kalman-filter-linear.jpg", (800, 600)).into_drawing_area();
         root.fill(&WHITE).unwrap();
         let mut chart = ChartBuilder::on(&root)
             .caption("Kalman Filtered Linear(Static)", ("sans-serif", 30))
